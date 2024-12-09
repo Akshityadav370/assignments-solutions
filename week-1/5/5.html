@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid Layout</title>
+    <style>
+      .container {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: repeat(auto-fit);
+        background-color: grey;
+        gap: 50px;
+      }
+
+      .contain-1 {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 2fr;
+        align-items: center;
+        justify-items: center;
+        padding-left: 3.5rem;
+        padding-right: 3.5rem;
+      }
+
+      .contain-2 {
+        display: grid;
+        grid-template-columns: repeat(3, 0.2fr);
+        gap: 10px;
+        grid-template-rows: min-content;
+      }
+
+      .lang-box {
+        background-color: bisque;
+        /* justify-items: center; */
+        align-items: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="contain-1">
+        <h2>Code in any language</h2>
+        <p>
+          VS Code supports almost every major programming language. Several ship
+          in the box, like JavaScript, TypeScript, CSS, and HTML, but extensions
+          for others can be found in the VS Code Marketplace.
+        </p>
+      </div>
+      <div class="contain-2">
+        <div class="lang-box"><p>Java</p></div>
+        <div class="lang-box"><p>Java</p></div>
+        <div class="lang-box"><p>Java</p></div>
+        <div class="lang-box"><p>Java</p></div>
+        <div class="lang-box"><p>Java</p></div>
+        <div class="lang-box"><p>Java</p></div>
+        <div class="lang-box"><p>Java</p></div>
+        <div class="lang-box"><p>Java</p></div>
+        <div class="lang-box"><p>Java</p></div>
+      </div>
+    </div>
+  </body>
+</html>
