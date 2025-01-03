@@ -1,0 +1,167 @@
+body {
+  background-color: #0e1117;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  /* background-color: black; */
+  color: white;
+  justify-content: space-between;
+  padding: 1.5rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  align-items: center;
+  padding-top: 0.8rem;
+  padding-bottom: 0.8rem;
+}
+
+header h3 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.flex {
+  display: flex;
+}
+
+.verticalCenter {
+  align-items: center;
+}
+
+.topImage {
+  padding-right: 12px;
+}
+
+.navLink {
+  padding-left: 20px;
+  color: gray;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.searchContainer {
+  gap: 1rem;
+}
+
+.searchInput {
+  border-radius: 5px;
+  border: 1px solid rgb(255, 255, 255, 0.2);
+  padding: 8px;
+  font-size: 16px;
+  background-color: black;
+}
+
+.downloadButton {
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  padding: 7px;
+  padding-left: 0px;
+  width: 120px;
+  padding-right: 0px;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.relative {
+  position: relative;
+}
+
+.banner {
+  color: white;
+  justify-content: center;
+  width: 100%;
+  gap: 0.2rem;
+  font-size: 1rem;
+  color: lightgray;
+  font-weight: 200;
+}
+
+.banner .navLink {
+  color: lightblue;
+}
+
+.closeBanner {
+  /* position: absolute;
+  top: 1rem;
+  right: 1rem; */
+  color: lightgray;
+  align-self: flex-end;
+  margin-right: 2rem;
+}
+
+.hero {
+  background: linear-gradient(180deg, #0e0e0e 0%, #141414 100%);
+  color: white;
+  margin-left: auto;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.heroContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.heroContainer > div {
+  text-align: left;
+}
+
+.cta-button {
+  display: inline-block;
+  background: #0078d4;
+  color: white;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.language {
+  color: white;
+  margin: 0 12%;
+}
+
+.language .container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  column-gap: 2rem;
+}
+
+.language .container p {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 160%;
+  color: #9ba3b4;
+}
+
+.language .languagePanel {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-inline: 2.5rem;
+}
+
+.languagePanel img {
+  height: 40px;
+  width: auto;
+}
+
+.languagePanel div {
+  align-items: center;
+}
+
+footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 20px;
+}
