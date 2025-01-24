@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="ContactUs">
+      <h1>Contact Us</h1>
+      <form action="#">
+        <div class="form-shape">
+          <label for="query"> Type of Query </label>
+          <select name="myQuery" id="query">
+            <option value="sel" selected>Select</option>
+            <option value="ord">Order Related Issues</option>
+            <option value="site">Site Related Issues</option>
+            <option value="fed">Complaint related Issues</option>
+            <option value="others">Others</option>
+          </select>
+        </div>
+        <div class="form-shape">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            name="myName"
+            id="name"
+            placeholder="Enter ur name"
+          />
+        </div>
+        <div class="form-shape">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            name="myEmail"
+            id="email"
+            placeholder="Enter ur email"
+          />
+        </div>
+        <div class="form-shape">
+          <label for="phone">Phone Number</label>
+          <input
+            type="number"
+            name="myNumber"
+            id="phone"
+            placeholder="Enter ur phone no"
+          />
+        </div>
+        <div class="radio">
+          Are you a member of Online Food Shop: Yes<input
+            type="radio"
+            name="member"
+            value="yes"
+            id="member"
+          />
+          No<input type="radio" name="member" value="no" id="member" />
+        </div>
+        <div class="form-shape">
+          <label for="message">Ellaborate your query</label>
+          <textarea name="myMessage" id="message" cols="30" rows="10">
+        Here...</textarea
+          >
+        </div>
+        <input type="submit" value="Submit" />
+        <input type="reset" value="Reset" />
+      </form>
+    </div>
+  </body>
+</html>

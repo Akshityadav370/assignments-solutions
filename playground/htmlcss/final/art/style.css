@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+/* Resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Open Sans', serif;
+}
+
+body {
+  background: rgb(144, 195, 200);
+  margin: 1rem;
+  font-family: 'Open Sans', serif;
+  font-weight: 300;
+}
+
+.wrapper-container {
+  background: #ebeae9;
+}
+
+/* Nav Start */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  padding: 20px;
+  margin-bottom: 5rem;
+}
+
+nav ul {
+  list-style: none;
+  margin-left: 5rem;
+}
+
+li a {
+  text-decoration: none;
+  color: #333;
+}
+
+nav .burger {
+  margin-right: 5rem;
+  color: pointer;
+}
+
+.burger span {
+  height: 4px;
+  border: 2px solid black;
+  margin: 4px;
+  background: #333;
+}
+
+/* Nav Ends */
+
+/* Header Starts */
+header {
+  margin: 6rem;
+}
+
+.main-heading {
+  width: 50%;
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.primary-heading {
+  width: 50%;
+  margin-top: 3rem;
+  font-size: 1.5rem;
+  line-height: 40px;
+}
+
+.bg-gray {
+  background: rgb(97, 97, 97);
+  color: #fff;
+  padding: 2px 10px;
+  font-weight: bold;
+}
+/* Header Ends */
+
+/* Main Starts */
+main {
+  margin: 0 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 40px;
+}
+
+main .img {
+  width: 40%;
+  margin: 10px;
+}
+/* Main Ends */
+
+/* Section Three Starts */
+.section-three {
+  margin-left: 5rem;
+}
+
+.section-three .primary-heading {
+  margin-bottom: 10rem;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.section-three img {
+  width: 400px;
+  height: 500px;
+  margin: 50px;
+}
+
+.section-three .item h1 {
+  font-size: 2rem;
+  color: rgb(97, 97, 97);
+  font-weight: 400;
+}
+
+/* SEction Three Ends */
+
+/* Footer Starts */
+footer {
+  margin-top: 10rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  height: 50vh;
+  color: #fff;
+  background: rgb(144, 195, 200);
+}
+
+footer .logo-container h1 {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+footer .logo-container p {
+  max-width: 400px;
+}
+
+footer .about-company {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+footer .about-company .container {
+  margin-top: 20px;
+  margin-right: 40px;
+}
+
+footer .about-company .container h1 {
+  font-weight: 500;
+  margin-bottom: 50px;
+}
+
+footer .about-company .container p {
+  font-family: sans-serif;
+  margin-bottom: 20px;
+}
+/* Footer Ends */
+
+/* Responsiveness Starts */
+@media screen and (max-width: 740px) {
+  header .main-heading {
+    width: 100%;
+  }
+  header .primary-heading {
+    width: 100%;
+    font-size: 1.5rem;
+  }
+
+  .section-three .main-heading {
+    width: 100%;
+  }
+  .section-three .primary-heading {
+    width: 100%;
+    font-size: 1.5rem;
+  }
+  .section-three img {
+    margin: 0;
+  }
+}
