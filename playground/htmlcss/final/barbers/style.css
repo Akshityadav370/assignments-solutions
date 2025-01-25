@@ -1,0 +1,321 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&family=Roboto&display=swap');
+
+:root {
+  --main-color: #37132d;
+  --main-font: 'Playfair Display', serif;
+  --secondary-font: 'Roboto', sans-serif;
+}
+
+/* Resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Nav Starts */
+
+nav {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 10rem;
+  margin-right: 10rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav .logo {
+  font-family: var(--main-font);
+  font-weight: 500;
+  font-size: 18px;
+}
+
+nav ul {
+  display: flex;
+}
+
+nav ul li {
+  list-style: none;
+  margin-right: 30px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-size: 15px;
+  font-family: var(--secondary-font);
+  color: #333;
+}
+
+/* Nav Ends */
+
+/* Header Starts */
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10%;
+  height: 50vh;
+}
+
+header .header-content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+
+.primary-btn {
+  font-family: var(--secondary-font);
+  font-size: 16px;
+  padding: 8px;
+  padding-left: 15px;
+  padding-right: 15px;
+  align-self: flex-start;
+  background-color: var(--main-color);
+  color: #fff;
+  transition: all 0.5s ease-out;
+  cursor: pointer;
+  border: 1px solid var(--main-color);
+}
+
+.primary-btn:hover {
+  border: 1px solid var(--main-color);
+  color: var(--main-color);
+  background-color: #fff;
+}
+
+header .primary-btn {
+  margin-top: 15px;
+}
+
+.main-heading {
+  font-family: var(--main-font);
+  font-size: 60px;
+}
+
+.primary-heading {
+  font-family: var(--secondary-font);
+  font-size: 16px;
+}
+
+.img-container {
+  position: relative;
+}
+
+.header-img-one {
+  position: absolute;
+  top: 125px;
+  right: 110px;
+  background: url(assets/stephan-louis-L3s5QySz5UM-unsplash.jpg);
+  height: 300px;
+  width: 210px;
+  background-position: bottom;
+  background-size: cover;
+}
+
+.header-img-two {
+  background: url(assets/jakob-owens-lkMJcGDZLVs-unsplash.jpg);
+  height: 300px;
+  width: 210px;
+  background-position: top;
+  background-size: cover;
+}
+/* Header Ends */
+
+/* Experience Section Starts */
+.section-experience {
+  display: flex;
+  margin-top: 10%;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+}
+
+.experience-content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+
+.section-label {
+  font-family: var(--main-font);
+  font-size: 22px;
+  color: gray;
+}
+
+.section-experience .primary-btn {
+  margin-top: 15px;
+}
+
+.section-experience .experience-img {
+  background: url(assets/eugene-chystiakov-taZSJ6xmt48-unsplash.jpg);
+  height: 320px;
+  width: 280px;
+  background-size: cover;
+}
+/* Experience Ends */
+
+/* Social Media Starts */
+.social-media {
+  padding: 5% 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+}
+
+.social-media-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.social-media-header button {
+  margin-right: 50px;
+  padding: 15px 18px;
+}
+
+.social-media-header ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.social-media-header ul li {
+  margin-right: 20px;
+}
+
+.social-media-header ul li a {
+  text-decoration: none;
+  font-size: 16px;
+  font-family: var(--secondary-font);
+  color: #333;
+  text-transform: uppercase;
+}
+
+.social-media-content {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 120px;
+}
+
+.social-media-img .img-container {
+  background: url(assets/albert-dera-ILip77SbmOE-unsplash.jpg);
+  height: 380px;
+  width: 320px;
+  background-position: top;
+  background-size: cover;
+}
+
+.social-media-content-text button {
+  margin-top: 15px;
+}
+
+.social-media-content-text {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+/* Social Media Ends */
+
+/* Service Section Starts */
+.service-section {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-section .service-section-header {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.service-cards-container {
+  margin-top: 2%;
+  width: 90%;
+  justify-content: space-around;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  max-width: 23%;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  padding-bottom: 20px;
+}
+
+.service-card-content {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: 20px;
+}
+
+.service-card-content p {
+  text-align: center;
+}
+
+.service-card-content button {
+  align-self: center;
+}
+
+.service-name {
+  font-family: var(--secondary-font);
+  margin-bottom: 5px;
+  font-size: 22px;
+}
+
+.img-one {
+  height: 250px;
+  width: 250px;
+}
+
+.service-card-img img {
+  height: 220px;
+  width: 100%;
+  background-size: cover;
+}
+/* Service Section Ends */
+
+/* Footer Starts */
+footer {
+  height: 50vh;
+  background-color: var(--main-color);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+footer .primary-heading {
+  font-size: 30px;
+  color: #fff;
+  font-family: var(--main-font);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+footer ul li {
+  list-style: none;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+footer ul li a {
+  text-decoration: none;
+  font-family: var(--secondary-font);
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  font-weight: 200;
+}
+/* Footer Ends */
