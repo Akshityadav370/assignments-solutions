@@ -1,0 +1,385 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --main-color: #e3e8e4;
+  --primary-color: #363636;
+  --main-font: 'Playfair Display SC', serif;
+  --primary-font: 'Roboto', serif;
+}
+
+/* Nav Starts */
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 0.8rem;
+  align-items: center;
+}
+
+.logo-h1 {
+  font-size: 28px;
+  font-family: var(--primary-font);
+  font-weight: 500;
+}
+
+.nav-links ul {
+  display: flex;
+}
+
+.nav-links ul li {
+  list-style: none;
+  margin-right: 35px;
+}
+
+.nav-links ul li a {
+  text-decoration: none;
+  font-family: var(--primary-font);
+  font-weight: 500;
+  color: #333;
+}
+
+.primary-button {
+  padding: 8px 30px;
+  border-radius: 25px;
+  color: #fff;
+  border: 1px solid black;
+  background-color: #333;
+  transition: all 0.5 ease-in;
+  cursor: pointer;
+}
+
+.primary-button:hover {
+  color: black;
+  background-color: #fff;
+}
+
+/* Nav Ends */
+
+/* Header Starts */
+header {
+  display: flex;
+  justify-content: space-around;
+  height: 85vh;
+  align-items: center;
+  margin-top: 1rem;
+  margin-left: 3rem;
+}
+
+.header-content {
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  row-gap: 20px;
+}
+
+.main-heading {
+  font-family: var(--main-font);
+  color: var(--primary-color);
+  font-size: 55px;
+}
+
+.gray {
+  color: lightgrey;
+}
+
+.primary-heading {
+  font-family: var(--primary-font);
+  font-size: 16px;
+  line-height: 25px;
+}
+
+header .primary-heading {
+  max-width: 60%;
+}
+
+.secondary-button {
+  background-color: #fff;
+  color: #333;
+  border: none;
+  font-weight: bold;
+}
+
+.header-img-container {
+  padding: 250px;
+  background-color: var(--main-color);
+  border-radius: 100%;
+  position: relative;
+}
+
+.header-img {
+  background: url(images/daniil-silantev-1P6AnKDw6S8-unsplash-removebg-preview.png);
+  height: 350px;
+  width: 350px;
+  background-position: bottom;
+  background-size: cover;
+  position: absolute;
+  top: 125px;
+  left: 63px;
+  right: 0;
+  bottom: 0;
+}
+/* Header Ends */
+
+/* Stats Count Starts */
+.stats-count {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 6rem;
+  margin: 2rem 0;
+  column-gap: 75px;
+}
+
+.count .main-heading {
+  font-weight: 900;
+  font-size: 45px;
+}
+
+.count .primary-heading {
+  font-size: 15px;
+}
+/* Stats Count Ends */
+
+/* Section Categories Starts */
+.categories {
+  margin-top: 100px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 50px 0;
+}
+
+.categories .main-heading {
+  align-self: center;
+  text-align: center;
+  font-size: 60px;
+}
+
+.items-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.item-img {
+  padding: 10px 25px;
+}
+
+.category-image {
+  height: 250px;
+  width: 200px;
+}
+
+.item {
+  border-top-left-radius: 200px;
+  border-top-right-radius: 200px;
+  background-color: var(--main-color);
+}
+
+.item-content {
+  text-align: center;
+  background-color: #363636;
+  padding: 20px 0;
+}
+
+.item-name {
+  font-family: var(--primary-font);
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.item-description {
+  font-family: var(--primary-font);
+  font-size: 16px;
+  color: #fff;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+  column-gap: 25px;
+}
+
+.nav-container p {
+  font-size: 22px;
+  color: #333;
+  font-weight: bold;
+}
+/* Section Categories Ends */
+
+/* Section Choose Us Starts  */
+.choose-us {
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+
+  margin-top: 4rem;
+  align-items: center;
+}
+
+.choose-us .img-container {
+  border-radius: 50%;
+  background-color: var(--main-color);
+}
+
+.choose-us .img-content {
+  background: url(images/scott-webb-eD853mTbBA0-unsplash-removebg-preview.png);
+  height: 450px;
+  width: 400px;
+  background-size: cover;
+  background-position: top;
+  position: relative;
+}
+
+.choose-us .choose-content {
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 75px;
+}
+
+.choose-content .content-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content-header h1 {
+  font-size: 60px;
+}
+
+.content-header p {
+  font-size: 16px;
+}
+
+.choose-content .main-heading {
+  margin-bottom: 10px;
+}
+
+.choose-content .primary-heading {
+  max-width: 60%;
+}
+
+.content-cards {
+  display: grid;
+  grid-template-columns: 25% 25%;
+  justify-content: center;
+  column-gap: 50px;
+  row-gap: 50px;
+}
+
+.card {
+  padding: 20px;
+  padding-bottom: 40px;
+  padding-right: 50px;
+  position: relative;
+}
+
+.card-prime {
+  background-color: var(--main-color);
+}
+
+.star-container {
+  position: absolute;
+  padding: 4px 8px;
+  border-radius: 100%;
+  color: #fff;
+  top: -15px;
+  left: -13px;
+  background-color: #333;
+}
+
+.star-container p {
+  font-size: 16px;
+}
+
+.card .card-info {
+  color: grey;
+  font-size: 13px;
+}
+
+.card-header {
+  font-family: var(--primary-font);
+  font-size: 18px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+/* Section Choose Us Ends  */
+
+/* Features Starts */
+#features-img-container {
+  border-top-left-radius: 25%;
+  border-top-right-radius: 25%;
+  border-bottom-right-radius: 100%;
+  border-bottom-left-radius: 100%;
+}
+
+#features-img-content {
+  background: url(images/pexels-ron-lach-8346055-removebg-preview.png);
+  height: 450px;
+  width: 400px;
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  z-index: 2;
+}
+/* Features Ends */
+
+/* Footer Starts */
+footer {
+  height: 100vh;
+  background-color: #363636;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 50px;
+  padding-right: 100px;
+}
+
+.logo {
+  max-width: 50%;
+}
+
+.logo-heading {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.logo-content {
+  color: #fff;
+  max-width: 60%;
+}
+
+.logo-info {
+  display: flex;
+  column-gap: 50px;
+}
+
+.logo-card .main-heading {
+  color: #fff;
+  font-size: 35px;
+  margin-bottom: 40px;
+}
+
+.logo-card ul li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.logo-card a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 17px;
+}
