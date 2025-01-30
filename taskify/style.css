@@ -1,0 +1,52 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.container .to-do-container,
+.in-progress-container {
+  background-color: darkgrey;
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+button {
+  padding: 0.5rem;
+}
+
+#to-do-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#in-progress-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.card {
+  background-color: white;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: grab;
+}
+
+.dragging {
+  opacity: 0.5;
+}
+
+.to-do-container,
+.in-progress-container {
+  min-height: 200px;
+  border: 2px dashed #ccc;
+  padding: 10px;
+}

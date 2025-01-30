@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Form Builder</h1>
+      <div class="form-inputs">
+        <label for="fieldType">Select Type:</label>
+        <select id="fieldType">
+          <option value="text">Text Input</option>
+          <option value="checkbox">Checkbox</option>
+          <option value="radio">Radio</option>
+        </select>
+        <div id="noOfRadioButtonsContainer">
+          <label for="fieldType">Select No Of Radio Buttons:</label>
+          <select id="noOfRadioButtons">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+        <div id="fieldRelatedContent"></div>
+        <button id="addField">Add Field</button>
+      </div>
+      <div class="form-preview">
+        <h2>Form Preview</h2>
+        <div id="dynamicForm"></div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
