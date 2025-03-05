@@ -12,7 +12,6 @@ export const userRouter = express.Router();
 userRouter.post('/signup', async (req: Request, res: Response) => {
   try {
     const { username, password } = req.body;
-    console.log('hi', username, password);
     if (!username || !password) {
       res.status(411).json({ message: 'Error in inputs' });
     }
