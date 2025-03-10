@@ -127,14 +127,15 @@ contentRouter.post(
           });
           return;
         }
+        const newRandomString = randomHashString(10);
         const newLink = new Link({
           userId: req.userId,
-          hash: randomHashString(10),
+          hash: newRandomString,
         });
         await newLink.save();
         await User.findOneAndUpdate(
           { userId: req.userId },
-          { shareableLink: share }
+          { shareableLink: newRandomString }
         );
         res.status(200).json({
           message: 'Updated shareable link!',

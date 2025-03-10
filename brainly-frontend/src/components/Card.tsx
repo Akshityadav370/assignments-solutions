@@ -8,10 +8,18 @@ interface CardProps {
   link: string;
   type: 'twitter' | 'youtube';
   id: string;
-  onDelete: (id: string) => Promise<any>;
+  onDelete?: (id: string) => Promise<any>;
+  readOnly?: boolean;
 }
 
-const Card = ({ title, link, type, id, onDelete }: CardProps) => {
+const Card = ({
+  title,
+  link,
+  type,
+  id,
+  onDelete,
+  readOnly = false,
+}: CardProps) => {
   const handleDelete = async () => {
     if (window.confirm('Are you sure you want to delete this content?')) {
       await onDelete(id);
@@ -35,12 +43,14 @@ const Card = ({ title, link, type, id, onDelete }: CardProps) => {
                 <ShareIcon />
               </a>
             </div>
-            <div
-              className='text-gray-500 cursor-pointer'
-              onClick={handleDelete}
-            >
-              <TrashIcon />
-            </div>
+            {!readOnly && (
+              <div
+                className='text-gray-500 cursor-pointer'
+                onClick={handleDelete}
+              >
+                <TrashIcon />
+              </div>
+            )}
           </div>
         </div>
         <div className='pt-4'>

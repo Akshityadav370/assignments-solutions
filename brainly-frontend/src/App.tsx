@@ -4,6 +4,7 @@ import Signin from './pages/signin';
 import Signup from './pages/signup';
 import AuthProvider from './provider/AuthProvider';
 import PrivateRoute from './pages/privateRoute';
+import Sharedpage from './pages/sharedpage';
 
 // TODO
 // Libs used for data fetching
@@ -27,6 +28,7 @@ function App() {
           <Route element={<PrivateRoute />}>
             <Route path='/dashboard' element={<Dashboard />} />
           </Route>
+          <Route path='/content/share/:shareLink' element={<Sharedpage />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

@@ -12,7 +12,7 @@ import { useAuth } from '../provider/AuthProvider';
 
 function Dashboard() {
   const [modalOpen, setModalOpen] = useState(false);
-  const { user } = useAuth();
+  const { user, configureSession } = useAuth();
   const { contents, deleteContent, refetchContent, refresh } = useContent();
 
   const shareMyBrain = async () => {
@@ -28,7 +28,21 @@ function Dashboard() {
       );
 
       if (res.data) {
-        alert(`you can visit the link at ${res.data.link}`);
+        const token = localStorage.getItem('token');
+
+        if (user && token) {
+          const updatedUser = {
+            ...user,
+            shareable: !user.shareable,
+          };
+
+          configureSession({
+            user: updatedUser,
+            token,
+          });
+
+          alert(`You can visit the link at ${res.data.link}`);
+        }
       }
     } catch (error) {
       console.error('Client Error: Sharing Brain', error);

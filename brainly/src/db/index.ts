@@ -57,8 +57,7 @@ const userSchema = new Schema({
     type: String,
     unique: true,
     ref: 'Link',
-    sharing: Boolean,
-    default: false,
+    default: undefined,
   },
 });
 
