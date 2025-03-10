@@ -65,6 +65,7 @@ userRouter.post('/signin', async (req: Request, res: Response) => {
 
     res.status(200).json({
       token: token,
+      username,
       message: 'Login Successfull',
     });
   } catch (error) {

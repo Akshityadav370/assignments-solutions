@@ -64,18 +64,21 @@ contentRouter.get('/', authenticateJwt, async (req, res) => {
 });
 
 // READ CONTENT BY USER id
-contentRouter.get('/:id', authenticateJwt, async (req, res) => {
-  try {
-    const { id } = req.params;
-    const contentCreatedByUser = await Content.find({ userId: id })
-      .populate('userId', 'username')
-      .populate('tags', 'title');
-    res.status(200).json({ content: contentCreatedByUser });
-  } catch (error) {
-    console.error('Error fetching content by userId', error);
-    res.status(500).json({ message: 'Internal Server Error', error });
+contentRouter.get(
+  '/me',
+  authenticateJwt,
+  async (req: AuthenticatedRequest, res) => {
+    try {
+      const contentCreatedByUser = await Content.find({ userId: req.userId })
+        .populate('userId', 'username')
+        .populate('tags', 'title');
+      res.status(200).json({ content: contentCreatedByUser });
+    } catch (error) {
+      console.error('Error fetching content by userId', error);
+      res.status(500).json({ message: 'Internal Server Error', error });
+    }
   }
-});
+);
 
 // DELET A CONTENT
 contentRouter.delete('/', authenticateJwt, async (req, res) => {

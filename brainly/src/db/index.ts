@@ -16,7 +16,14 @@ export const connectToDatabase = async () => {
 const Schema = mongoose.Schema;
 const ObjectId = new mongoose.Types.ObjectId();
 
-const contentTypes = ['image', 'video', 'article', 'audio'] as const;
+const contentTypes = [
+  'image',
+  'video',
+  'article',
+  'audio',
+  'twitter',
+  'youtube',
+] as const;
 
 // Zod Validations Start
 const userSchemaZod = z.object({
