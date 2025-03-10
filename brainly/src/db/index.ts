@@ -53,6 +53,13 @@ const linkSchemaZod = z.object({ hash: z.string(), userId: z.string() });
 const userSchema = new Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  shareableLink: {
+    type: String,
+    unique: true,
+    ref: 'Link',
+    sharing: Boolean,
+    default: false,
+  },
 });
 
 const tagSchema = new Schema({

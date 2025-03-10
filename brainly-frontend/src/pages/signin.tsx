@@ -19,7 +19,11 @@ const Signin = () => {
       password,
     });
     configureSession({
-      username: response.data.username,
+      user: {
+        username: response.data.username,
+        userId: response.data.userId,
+        shareable: response.data.shareable,
+      },
       token: response.data.token,
     });
   };

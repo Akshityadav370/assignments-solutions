@@ -1,10 +1,19 @@
-import { createContext, useState, useContext, ReactNode } from 'react';
+import {
+  createContext,
+  useState,
+  useContext,
+  ReactNode,
+  useEffect,
+} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 interface AuthContextType {
   token: string;
-  user: string | undefined;
-  configureSession: (params: { username: string; token: string }) => void;
+  user: { username: string; shareable: boolean; userId: string } | undefined;
+  configureSession: (params: {
+    user: { username: string; shareable: boolean; userId: string };
+    token: string;
+  }) => void;
   logOut: () => void;
 }
 
@@ -20,22 +29,40 @@ interface AuthProviderProps {
 }
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [user, setUser] = useState<string | undefined>(undefined);
+  const [user, setUser] = useState<
+    { username: string; shareable: boolean; userId: string } | undefined
+  >(undefined);
   const [token, setToken] = useState(localStorage.getItem('token') || '');
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const storedToken = localStorage.getItem('token');
+    const storedUser = localStorage.getItem('user');
+
+    if (storedToken && storedUser) {
+      setToken(storedToken);
+      try {
+        setUser(JSON.parse(storedUser));
+      } catch (error) {
+        console.error('Error parsing stored user data', error);
+        localStorage.removeItem('user');
+      }
+    }
+  }, []);
+
   const configureSession = ({
-    username,
+    user,
     token,
   }: {
-    username: string;
+    user: { username: string; shareable: boolean; userId: string };
     token: string;
   }) => {
     try {
       if (token) {
         setToken(token);
-        setUser(username);
+        setUser(user);
         localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(user));
         navigate('/dashboard');
       }
     } catch (error) {
@@ -44,9 +71,10 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   const logOut = () => {
-    setUser('');
+    setUser(undefined);
     setToken('');
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     navigate('/signin');
   };
 

@@ -8,6 +8,7 @@ import axios from 'axios';
 interface CreateContentModalProps {
   open: boolean;
   onClose: () => void;
+  onContentAdded: () => void;
 }
 
 enum ContentType {
@@ -18,7 +19,11 @@ enum ContentType {
 // TODO:
 // Figure out ways to close when clicking outside of the modal content area!
 
-const CreateContentModal = ({ open, onClose }: CreateContentModalProps) => {
+const CreateContentModal = ({
+  open,
+  onClose,
+  onContentAdded,
+}: CreateContentModalProps) => {
   const titleRef = useRef<HTMLInputElement>(null);
   const linkRef = useRef<HTMLInputElement>(null);
   const [type, setType] = useState(ContentType.YouTube);
@@ -40,6 +45,8 @@ const CreateContentModal = ({ open, onClose }: CreateContentModalProps) => {
         },
       }
     );
+    onClose();
+    onContentAdded();
   };
 
   if (!open) return null;

@@ -14,7 +14,7 @@ export const Sidebar = () => {
           <img src={Logo} height={35} width={35} />
           Brainly
         </div>
-        <div onClick={logOut}>
+        <div className='cursor-pointer' onClick={logOut}>
           <LogoutIcon />
         </div>
       </div>

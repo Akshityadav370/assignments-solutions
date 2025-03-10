@@ -1,5 +1,5 @@
 import express from 'express';
-import { Content, Link, Tag, validateContent } from '../db';
+import { Content, Link, Tag, User, validateContent } from '../db';
 import { AuthenticatedRequest, authenticateJwt } from '../middleware/user';
 import { randomHashString } from '../utils';
 import mongoose from 'mongoose';
@@ -52,7 +52,7 @@ contentRouter.post(
   }
 );
 
-// READ ALL CONTENT
+// READ ALL CONTENT (NOT FOR PRODUCTION)
 contentRouter.get('/', authenticateJwt, async (req, res) => {
   try {
     const allContent = await Content.find({}).populate('tags', 'title');
@@ -81,19 +81,35 @@ contentRouter.get(
 );
 
 // DELET A CONTENT
-contentRouter.delete('/', authenticateJwt, async (req, res) => {
-  const { contentId, userId } = req.body;
-  try {
-    const contentToBeDeleted = await Content.findById(contentId);
-    if (!contentToBeDeleted || userId !== contentId.userId) {
-      res.status(403).json({});
-      return;
+contentRouter.delete(
+  '/',
+  authenticateJwt,
+  async (req: AuthenticatedRequest, res) => {
+    const { contentId } = req.body;
+    try {
+      const contentToBeDeleted = await Content.findById(contentId);
+
+      if (!contentToBeDeleted) {
+        res.status(403).json({ message: 'Content Not Found!' });
+        return;
+      }
+
+      if (
+        !contentToBeDeleted.userId ||
+        req.userId !== contentToBeDeleted.userId.toString()
+      ) {
+        res.status(403).json({ message: 'Not Allowed!' });
+        return;
+      }
+
+      await Content.findByIdAndDelete(contentId);
+      res.status(200).json({ message: 'Content deleted successfully' });
+    } catch (error) {
+      console.error('Error deleting a content', error);
+      res.status(500).json({ message: 'Internal Server Error', error });
     }
-  } catch (error) {
-    console.error('Error deleting a content', error);
-    res.status(500).json({ message: 'Internal Server Error', error });
   }
-});
+);
 
 // CREATE A SHAREABLE LINK
 contentRouter.post(
@@ -116,6 +132,10 @@ contentRouter.post(
           hash: randomHashString(10),
         });
         await newLink.save();
+        await User.findOneAndUpdate(
+          { userId: req.userId },
+          { shareableLink: share }
+        );
         res.status(200).json({
           message: 'Updated shareable link!',
           link: `/content/share/${newLink.hash}`,

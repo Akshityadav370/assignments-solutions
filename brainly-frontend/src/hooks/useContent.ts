@@ -1,26 +1,52 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { BACKEND_URL } from '../config';
 
 export function useContent() {
   const [contents, setContents] = useState([]);
+  const [refresh, setRefresh] = useState(0); // Add a refresh counter state
 
-  useEffect(() => {
-    const fetchContent = async () => {
+  const fetchContent = useCallback(async () => {
+    try {
+      const res = await axios.get(`${BACKEND_URL}/api/v1/content/me`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      if (res.data) {
+        setContents(res.data.content);
+      }
+    } catch (error) {
+      console.error('Client Error: Fetching content', error);
+    }
+  }, []);
+
+  const refetchContent = useCallback(() => {
+    setRefresh((prev) => prev + 1);
+  }, []);
+
+  const deleteContent = useCallback(
+    async (contentId: string) => {
       try {
-        const res = await axios.get(`${BACKEND_URL}/api/v1/content`, {
+        await axios.delete(`${BACKEND_URL}/api/v1/content`, {
+          data: { contentId: contentId },
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },
         });
-        setContents(res.data.content);
+
+        refetchContent();
       } catch (error) {
-        console.error('Client Error: Fetching content', error);
+        console.error('Client Error: Deleting content', error);
+        return 'error';
       }
-    };
+    },
+    [refetchContent]
+  );
 
+  useEffect(() => {
     fetchContent();
-  }, []);
+  }, [refresh, fetchContent]);
 
-  return contents;
+  return { contents, deleteContent, refetchContent, refresh };
 }
