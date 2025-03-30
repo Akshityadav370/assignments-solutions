@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from 'express';
 import { User } from '../models/User';
 import { generateAccessToken } from '../helpers';
 import jwt from 'jsonwebtoken';
-import { JWT_SECRET } from '../constants';
+import { ACCESS_TOKEN, JWT_SECRET, REFRESH_TOKEN } from '../constants';
 
 export const loginController = async (
   req: Request,
@@ -30,11 +30,20 @@ export const loginController = async (
     }
 
     const accessToken = generateAccessToken(user);
+    res.cookie(ACCESS_TOKEN, accessToken, {
+      httpOnly: true,
+      secure: true,
+      path: '/',
+    });
+
     const refreshToken = jwt.sign({ user }, JWT_SECRET!, { expiresIn: '1d' });
+    res.cookie(REFRESH_TOKEN, refreshToken, {
+      httpOnly: true,
+      secure: true,
+      path: '/',
+    });
 
     res.status(200).json({
-      accessToken,
-      refreshToken,
       user,
       message: 'Login successful',
     });
@@ -90,9 +99,12 @@ export const tokenController = async (
         throw { status: 403, message: 'Verification failed' };
       }
       const accessToken = generateAccessToken(user);
-      res.status(200).json({
-        accessToken,
+      res.cookie(ACCESS_TOKEN, accessToken, {
+        httpOnly: true,
+        secure: true,
+        path: '/',
       });
+      res.status(200).json({ message: 'Token refreshed successfully' });
     });
   } catch (error) {
     console.error(error);
