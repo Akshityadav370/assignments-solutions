@@ -3,7 +3,7 @@ import { JWT_SECRET } from '../constants';
 import { IUser } from '../models/User';
 
 export const generateAccessToken = (user: IUser) => {
-  return jwt.sign({ username: user.username }, JWT_SECRET!, {
+  return jwt.sign({ user }, JWT_SECRET!, {
     expiresIn: '20s',
   });
 };
