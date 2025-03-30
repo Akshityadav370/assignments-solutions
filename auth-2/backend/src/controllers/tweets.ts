@@ -33,7 +33,7 @@ export const getTweetController = async (
   try {
     const { id } = req.params;
 
-    const user = await User.findOne({ where: { id: id } });
+    const user = await User.findOne({ _id: id });
 
     if (!user) {
       throw {
@@ -42,12 +42,13 @@ export const getTweetController = async (
       };
     }
 
-    if (user.id !== parseInt(id)) {
+    if ((user._id as string).toString() !== id) {
       throw {
         status: 400,
-        message: 'No, Tweets Associated with this user',
+        message: 'No Tweets Associated with this user',
       };
     }
+
     res.status(200).json(DUMMY_TWEETS);
   } catch (error) {
     console.error(error);

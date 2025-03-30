@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.post('/login', loginController);
 router.post('/signup', signUpController);
-router.get('/generate-token', tokenController);
+router.post('/refresh-token', tokenController);
 router.get('/get-tweets/:id', authMiddleware, getTweetController);
 
 export default router;

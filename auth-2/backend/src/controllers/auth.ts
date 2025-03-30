@@ -18,10 +18,7 @@ export const loginController = async (
       };
     }
 
-    const user = await User.findOne({
-      $where: `this.name === "${name}" && this.password === "${password}"`,
-    });
-
+    const user = await User.findOne({ name });
     if (!user) {
       throw {
         status: 401,
@@ -32,15 +29,15 @@ export const loginController = async (
     const accessToken = generateAccessToken(user);
     res.cookie(ACCESS_TOKEN, accessToken, {
       httpOnly: true,
-      secure: true,
-      path: '/',
+      secure: false,
+      sameSite: 'lax',
     });
 
     const refreshToken = jwt.sign({ user }, JWT_SECRET!, { expiresIn: '1d' });
     res.cookie(REFRESH_TOKEN, refreshToken, {
       httpOnly: true,
-      secure: true,
-      path: '/',
+      secure: false,
+      sameSite: 'lax',
     });
 
     res.status(200).json({
@@ -101,7 +98,7 @@ export const tokenController = async (
       const accessToken = generateAccessToken(user);
       res.cookie(ACCESS_TOKEN, accessToken, {
         httpOnly: true,
-        secure: true,
+        secure: false,
         path: '/',
       });
       res.status(200).json({ message: 'Token refreshed successfully' });

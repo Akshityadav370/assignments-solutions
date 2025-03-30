@@ -11,8 +11,7 @@ const authMiddleware = (
   res: Response,
   next: NextFunction
 ) => {
-  const header = req.headers['authorization'];
-  const token = header && header.split(' ')[1];
+  const token: string = req.cookies.accessToken;
   try {
     if (!token) {
       throw { status: 403, message: 'User not authorised' };

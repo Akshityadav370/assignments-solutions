@@ -3,11 +3,9 @@ import axios from 'axios';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import { toast } from 'sonner';
 
-const baseURL =
-  process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080/api/v1';
-
 const customAxios = axios.create({
-  baseURL: baseURL,
+  baseURL: 'http://localhost:3000/api/v1',
+  withCredentials: true,
 });
 
 customAxios.interceptors.response.use(
@@ -42,7 +40,8 @@ export const login = async (
     });
 
     const { data } = response;
-    const id = data?.user?.id;
+    console.log('hi', data?.user);
+    const id = data?.user?._id;
     if (response.status === 200) {
       router.push(`/dashboard/${id}`);
     }
