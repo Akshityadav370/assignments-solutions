@@ -1,6 +1,6 @@
 import e, { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { JWT_SECRET } from '../config';
+import { JWT_SECRET } from '@repo/backend-common/config';
 
 // Extend Request type to include userId
 export interface AuthenticatedRequest extends Request {
