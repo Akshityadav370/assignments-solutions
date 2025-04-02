@@ -8,8 +8,25 @@ import { prismaClient } from '@repo/db/client';
 
 const roomRouter: Router = express.Router();
 
-roomRouter.get('/', (req, res) => {
-  console.log('hi');
+roomRouter.get('/:roomId', async (req, res) => {
+  try {
+    const { roomId } = req.params;
+    const messages = await prismaClient.chat.findMany({
+      where: {
+        roomId: Number(roomId),
+      },
+      orderBy: {
+        id: 'desc',
+      },
+      take: 50,
+    });
+    res.json({ messages });
+  } catch (error) {
+    throw {
+      status: 500,
+      message: 'Error Fetching Messages from RoomId',
+    };
+  }
 });
 
 roomRouter.post(

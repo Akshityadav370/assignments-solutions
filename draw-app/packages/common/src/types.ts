@@ -14,3 +14,7 @@ export const LoginUserSchema = z.object({
 export const CreateRoomSchema = z.object({
   name: z.string().min(3).max(20),
 });
+
+export const JOIN_ROOM = 'join_room';
+export const CHAT = 'chat';
+export const LEAVE_ROOM = 'leave_room';
