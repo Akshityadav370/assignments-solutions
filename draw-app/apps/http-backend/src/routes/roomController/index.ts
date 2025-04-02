@@ -1,17 +1,52 @@
 import express, { Router } from 'express';
-import { authMiddleware } from '../../middleware/authMiddleware';
+import {
+  AuthenticatedRequest,
+  authMiddleware,
+} from '../../middleware/authMiddleware';
 import { CreateRoomSchema } from '@repo/common/types';
+import { prismaClient } from '@repo/db/client';
 
 const roomRouter: Router = express.Router();
 
-roomRouter.post('/create', authMiddleware, (req, res) => {
-  const data = CreateRoomSchema.safeParse(req.body);
-  if (!data.success) {
-    throw { status: 404, message: 'Invalid data' };
-  }
-
-  // Logic to create a room
-  res.status(200).json({ message: 'Room created successfully', roomId: 123 });
+roomRouter.get('/', (req, res) => {
+  console.log('hi');
 });
+
+roomRouter.post(
+  '/create',
+  authMiddleware,
+  async (req: AuthenticatedRequest, res) => {
+    const data = CreateRoomSchema.safeParse(req.body);
+    if (!data.success) {
+      throw { status: 404, message: 'Invalid data' };
+    }
+    try {
+      console.log('hi', data.data.name, req.userId);
+
+      if (!req.userId) {
+        res.status(401).json({ message: 'User not authenticated properly' });
+      }
+      // Logic to create a room
+      const room = await prismaClient.room.create({
+        data: {
+          slug: data.data.name,
+          admin: {
+            connect: {
+              id: req.userId?.toString(),
+            },
+          },
+        },
+      });
+
+      console.log('hello', room.id, room);
+      res
+        .status(200)
+        .json({ message: 'Room created successfully', roomId: room.id });
+    } catch (error) {
+      console.error(error);
+      throw { status: 500, error };
+    }
+  }
+);
 
 export default roomRouter;

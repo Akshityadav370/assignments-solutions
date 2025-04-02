@@ -19,7 +19,7 @@ export function authMiddleware(
     if (!token) {
       throw { status: 404, message: 'No token provided' };
     }
-
+    console.log('/auth', JWT_SECRET);
     const decoded = jwt.verify(token, JWT_SECRET);
     if (decoded && typeof decoded === 'object' && 'userId' in decoded) {
       req.userId = decoded.userId as string;
@@ -27,11 +27,6 @@ export function authMiddleware(
     } else {
       throw { status: 404, message: 'Unauthorised' };
     }
-
-    // Here you would typically verify the token and extract user information
-    // For simplicity, let's assume the token is valid
-
-    next();
   } catch (error) {
     console.error(error);
     next(error);

@@ -20,6 +20,9 @@ importers:
 
   apps/http-backend:
     dependencies:
+      '@repo/db':
+        specifier: workspace:*
+        version: link:../../packages/db
       cookie-parser:
         specifier: ^1.4.7
         version: 1.4.7
@@ -106,13 +109,14 @@ importers:
         version: 8.18.0
 
   packages/backend-common:
+    dependencies:
+      '@types/node':
+        specifier: ^22.13.10
+        version: 22.13.10
     devDependencies:
       '@repo/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
-      '@types/node':
-        specifier: ^22.13.10
-        version: 22.13.10
 
   packages/common:
     dependencies:
