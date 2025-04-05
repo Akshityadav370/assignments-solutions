@@ -1,4 +1,4 @@
-import express, { Router } from 'express';
+import express, { Request, Response, Router } from 'express';
 import {
   AuthenticatedRequest,
   authMiddleware,
@@ -65,5 +65,23 @@ roomRouter.post(
     }
   }
 );
+
+roomRouter.get('/:slug', async (req: Request, res: Response) => {
+  try {
+    const { slug } = req.params;
+    const room = await prismaClient.room.findFirst({
+      where: {
+        slug,
+      },
+    });
+    if (!room) {
+      throw { status: 404, message: 'Room not found' };
+    }
+    res.json({ room });
+  } catch (error) {
+    console.error(error);
+    throw { status: 500, message: 'Error Fetching Room' };
+  }
+});
 
 export default roomRouter;
