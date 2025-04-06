@@ -30,7 +30,7 @@ userRouter.post('/signup', async (req, res) => {
 });
 
 userRouter.post('/signin', async (req, res) => {
-  const parsedData = CreateUserSchema.safeParse(req.body);
+  const parsedData = LoginUserSchema.safeParse(req.body);
   if (!parsedData.success) {
     throw { status: 404, message: 'Invalid data' };
   }

@@ -1,8 +1,11 @@
 import express, { json } from 'express';
 import mainRouter from './routes';
+import cors from 'cors';
 import { errorHandler, notFoundHandler } from './middleware/errorMiddleware';
 
 const app = express();
+
+app.use(cors());
 
 app.use(json());
 

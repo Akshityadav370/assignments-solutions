@@ -1,3 +1,4 @@
+'use client';
 import { useEffect, useState } from 'react';
 import useSocket from '../hooks/useSocket';
 import { JOIN_ROOM, CHAT, LEAVE_ROOM } from '@repo/common/types';
