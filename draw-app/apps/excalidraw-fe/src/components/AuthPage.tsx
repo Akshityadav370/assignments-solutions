@@ -42,7 +42,7 @@ const AuthPage = ({ isSignin }: { isSignin: boolean }) => {
         </h1>
         {!isSignin && (
           <input
-            className='border border-gray-300 p-2 rounded placeholder:text-gray-500'
+            className='border border-gray-300 p-2 rounded placeholder:text-gray-500 text-white'
             type='text'
             placeholder='Name'
             onChange={(e) => setName(e.target.value)}
@@ -50,14 +50,14 @@ const AuthPage = ({ isSignin }: { isSignin: boolean }) => {
           />
         )}
         <input
-          className='border border-gray-300 p-2 rounded placeholder:text-gray-500'
+          className='border border-gray-300 p-2 rounded placeholder:text-gray-500 text-white'
           type='email'
           placeholder='Email'
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
         <input
-          className='border border-gray-300 p-2 rounded placeholder:text-gray-500'
+          className='border border-gray-300 p-2 rounded placeholder:text-gray-500 text-white'
           type='password'
           placeholder='Password'
           onChange={(e) => setPassword(e.target.value)}

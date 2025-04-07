@@ -3,7 +3,11 @@ import { BACKEND_URL } from '../../config';
 import axios from 'axios';
 
 async function getRoomId(slug: string) {
-  const res = await axios.get(`${BACKEND_URL}/room/${slug}`);
+  const res = await axios.get(`${BACKEND_URL}/room/${slug}`, {
+    headers: {
+      Authorization: '',
+    },
+  });
   if (res.status !== 200) {
     return null;
   }

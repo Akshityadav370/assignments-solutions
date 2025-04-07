@@ -1,32 +1,19 @@
 'use client';
 
-import { initDraw } from '@/draw';
-import { useEffect, useRef, useState } from 'react';
+import Canvas from '@/components/Canvas';
+import useSocket from '@/hooks/useSocket';
+import { use } from 'react';
 
-const Canvas = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+const CanvasRoom = ({ params }: { params: Promise<{ roomId: string }> }) => {
+  const { roomId } = use(params);
 
-  useEffect(() => {
-    // Set dimensions on mount
-    setDimensions({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    });
+  const { socket, loading } = useSocket();
 
-    if (canvasRef.current) {
-      initDraw(canvasRef.current);
-    }
-  }, []);
+  if (!socket || loading || !roomId) {
+    return <div>Connecting to server...</div>;
+  }
 
-  return (
-    <canvas
-      ref={canvasRef}
-      width={dimensions.width}
-      height={dimensions.height}
-      className='bg-white w-screen h-screen'
-    />
-  );
+  return <Canvas roomId={roomId} socket={socket} />;
 };
 
-export default Canvas;
+export default CanvasRoom;
