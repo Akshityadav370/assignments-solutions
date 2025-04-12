@@ -18,3 +18,9 @@ export const CreateRoomSchema = z.object({
 export const JOIN_ROOM = 'join_room';
 export const CHAT = 'chat';
 export const LEAVE_ROOM = 'leave_room';
+
+export const WEBSOCKET_URL = 'ws://localhost:8080';
+export const BACKEND_URL = 'http://localhost:3001/api/v1';
+
+export const ACCESS_TOKEN = 'accessToken';
+export const REFRESH_TOKEN = 'refreshToken';

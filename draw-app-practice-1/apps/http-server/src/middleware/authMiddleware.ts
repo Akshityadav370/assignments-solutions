@@ -12,10 +12,12 @@ function authMiddleWare(
   next: NextFunction
 ) {
   try {
-    const token = req.headers['authorization'];
+    const token = req.cookies.accessToken;
+    console.log('accessToken', token);
     if (!token) {
       throw { status: 404, message: 'No token provided' };
     }
+
     const decoded = jwt.verify(token, JWT_SECRET);
     if (decoded && typeof decoded === 'object' && 'userId' in decoded) {
       req.userId = decoded.userId as string;

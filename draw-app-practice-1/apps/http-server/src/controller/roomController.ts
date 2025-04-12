@@ -84,3 +84,5 @@ roomController.get(
     }
   }
 );
+
+export default roomController;

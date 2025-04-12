@@ -1,13 +1,22 @@
 import express, { NextFunction, Request, Response, Router } from 'express';
-import jwt from 'jsonwebtoken';
-import { JWT_SECRET } from '@repo/backend-common/config';
-import { CreateUserSchema, LoginUserSchema } from '@repo/common/types';
+import {
+  ACCESS_TOKEN,
+  CreateUserSchema,
+  LoginUserSchema,
+  REFRESH_TOKEN,
+} from '@repo/common/types';
 import bcrypt from 'bcrypt';
 import { prismaClient } from '@repo/db/client';
+import { generateToken } from '../utils';
+import authMiddleWare, {
+  AuthenticatedRequest,
+} from '../middleware/authMiddleware';
+import { JWT_SECRET } from '@repo/backend-common/config';
+import jwt from 'jsonwebtoken';
 
 const userController: Router = express.Router();
 
-userController.post('/signin', async (req: Request, res: Response) => {
+userController.post('/signup', async (req: Request, res: Response) => {
   try {
     const parsedData = CreateUserSchema.safeParse(req.body);
     if (!parsedData.success) {
@@ -51,13 +60,37 @@ userController.post(
         throw { status: 401, message: 'Invalid Credentials' };
       }
 
-      const token = jwt.sign({ userId: user.id }, JWT_SECRET);
+      const accessToken = generateToken(user.id);
+      res.cookie(ACCESS_TOKEN, accessToken, {
+        httpOnly: true,
+        secure: false,
+        sameSite: 'lax',
+      });
 
-      res.json({ token });
+      const refreshToken = generateToken(user.id);
+      res.cookie(REFRESH_TOKEN, refreshToken, {
+        httpOnly: true,
+        secure: false,
+        sameSite: 'lax',
+      });
+
+      res.json({ user, message: 'Login Successful!' });
     } catch (error) {
       console.error(error);
       next(error);
     }
+  }
+);
+
+userController.get(
+  '/token',
+  authMiddleWare,
+  (req: AuthenticatedRequest, res) => {
+    const wsToken = jwt.sign({ userId: req.userId }, JWT_SECRET, {
+      expiresIn: '1h',
+    });
+
+    res.json({ token: wsToken });
   }
 );
 
