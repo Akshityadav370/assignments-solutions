@@ -1,0 +1,19 @@
+name: Deploy to staging
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  redeploy_everything:
+    name: Deploying everything to the staging cluster
+    runs-on: ubuntu-latest
+    steps:
+      - name: SSH Into Server
+      - run: |
+          echo ${{secrets.SSH_PRIVATE_KEY}} &> ~/ssh_key
+          ssh -i ~/ssh_key root@143.110.252.148
+          cd assignments-solutions/mono-1 && git pull
+          pnpm install
+          pnpm run build
+          pm2 restart all
