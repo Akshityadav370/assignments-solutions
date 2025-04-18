@@ -10,10 +10,12 @@
   },
   "keywords": [],
   "dependencies": {
-    "@repo/db": "workspace:*"
+    "@repo/db": "workspace:*",
+    "ws": "^8.18.1"
   },
   "devDependencies": {
-    "@repo/typescript-config": "workspace:*"
+    "@repo/typescript-config": "workspace:*",
+    "@types/ws": "^8.18.1"
   },
   "author": "",
   "license": "ISC"
